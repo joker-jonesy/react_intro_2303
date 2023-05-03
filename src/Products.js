@@ -15,8 +15,8 @@ function Products(){
         }
     ]
 
-    const productEles = list.map((itm)=>
-        <Product name={itm.name} color={"red"}/>
+    const productEles = list.map((itm,idx)=>
+        <Product key={idx} name={itm.name} color={"red"}/>
     )
 
     return(
