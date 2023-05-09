@@ -1,11 +1,15 @@
 import React from "react";
+import {Link, NavLink} from "react-router-dom";
 
 function Nav(){
     return(
         <nav>
-            <a href="#">HOME</a>
-            <a href="#">ABOUT</a>
-            <a href="#">Contact</a>
+            {/*<Link to={'/'}>HOME</Link>*/}
+            {/*<Link to={'/products'}>PRODUCTS</Link>*/}
+            <NavLink className={({ isActive, isPending }) =>
+                isPending ? "pending" : isActive ? "active" : ""
+            } to={'/'}>HOME</NavLink>
+            <NavLink to={'/products'}>PRODUCTS</NavLink>
         </nav>
     )
 }

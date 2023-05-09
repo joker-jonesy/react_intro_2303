@@ -1,7 +1,9 @@
 import React from "react";
-import Product from "./Product";
+import {Link} from "react-router-dom";
 
 function Products(){
+
+    // redux store
 
     const list =[
         {
@@ -16,7 +18,7 @@ function Products(){
     ]
 
     const productEles = list.map((itm,idx)=>
-        <Product key={idx} name={itm.name} color={"red"}/>
+        <Link key={idx} to={'/products/'+idx}>{itm.name}</Link>
     )
 
     return(

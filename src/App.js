@@ -2,7 +2,9 @@ import React from "react";
 import Nav from "./Nav";
 import Home from './Home';
 import Products from "./Products";
+import Product from "./Product";
 import axios from "axios";
+import {Routes, Route} from "react-router-dom";
 
 function App() {
     const [load, setLoad] = React.useState(false);
@@ -12,10 +14,10 @@ function App() {
     const grabData = async () => {
         try {
             axios.get("https://jsonplaceholder.typicode.com/users/1").then(
-                (response)=>{
+                (response) => {
                     setData(response.data)
                 }
-            ).catch((err)=>{
+            ).catch((err) => {
                 console.log(err)
             })
 
@@ -37,8 +39,12 @@ function App() {
     return (
         <div className={wrap}>
             <Nav/>
-            <Home/>
-            <Products/>
+            <Routes>
+                <Route path={'/'} element={<Home/>}/>
+                <Route path={'/products'} element={<Products/>}/>
+                <Route path={'/products/:id'} element={<Product color={"red"}/>}/>
+            </Routes>
+
             <button onClick={() => setLoad(true)}>Load Data</button>
             <h1>{load ? data.name : "not loaded"}</h1>
         </div>
